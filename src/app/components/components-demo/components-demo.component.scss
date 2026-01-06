@@ -1,0 +1,179 @@
+.components-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #1976d2;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.component-section {
+  margin-bottom: 3rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.component-section h2 {
+  color: #1976d2;
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.definition {
+  background: #e3f2fd;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #1976d2;
+}
+
+.definition h3 {
+  color: #1976d2;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.definition p {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.definition code {
+  background: #f5f5f5;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: #d32f2f;
+}
+
+.example {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.code-snippet {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.code-snippet pre {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0.25rem;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 0.25rem;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.parent-component {
+  border: 2px solid #1976d2;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background: #e3f2fd;
+}
+
+.parent-component h4 {
+  color: #1976d2;
+  margin-top: 0;
+}
+
+.color-box {
+  width: 100px;
+  height: 100px;
+  background: #ff9800;
+  border: 2px solid #f57c00;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  transition: background-color 0.3s ease;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.inheritance-demo {
+  background: #fff3e0;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #ff9800;
+}
+
+.base-component h4 {
+  color: #ff9800;
+  margin-top: 0;
+}
+
+.standalone-demo {
+  background: #f3e5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #9c27b0;
+}
+
+.standalone-demo ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.best-practices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.practice-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.practice-item h4 {
+  color: #4caf50;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.practice-item p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}

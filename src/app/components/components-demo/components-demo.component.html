@@ -1,0 +1,183 @@
+<div class="components-container">
+  <h1>Components in Angular</h1>
+  
+  <!-- 1. COMPONENT LIFECYCLE -->
+  <section class="component-section">
+    <h2>1. Component Lifecycle Hooks</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Lifecycle hooks are methods that Angular calls at specific moments in a component's lifecycle. They allow you to tap into key moments and perform custom logic.</p>
+      <p><strong>Common Hooks:</strong> ngOnInit, ngOnDestroy, ngOnChanges, ngAfterViewInit</p>
+      <p><strong>Use Case:</strong> Initialization, cleanup, responding to input changes</p>
+    </div>
+    <div class="example">
+      <h3>Live Example:</h3>
+      <button (click)="toggleChild()">{{ showChild ? 'Destroy' : 'Create' }} Child Component</button>
+      <p>Check console for lifecycle messages</p>
+      
+      <app-child 
+        *ngIf="showChild"
+        [parentMessage]="messageToChild"
+        (messageToParent)="onChildMessage($event)">
+      </app-child>
+      
+      <p *ngIf="childMessage">Message from child: <strong>{{ childMessage }}</strong></p>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ lifecycleCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 2. COMPONENT COMMUNICATION -->
+  <section class="component-section">
+    <h2>2. Component Communication (@Input & @Output)</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Components communicate through Input and Output decorators. @Input passes data from parent to child, @Output sends events from child to parent.</p>
+      <p><strong>@Input:</strong> Receives data from parent component</p>
+      <p><strong>@Output:</strong> Emits events to parent component using EventEmitter</p>
+      <p><strong>Data Flow:</strong> Parent → Child (@Input), Child → Parent (@Output)</p>
+    </div>
+    <div class="example">
+      <h3>Live Example:</h3>
+      <label>Message to Child: </label>
+      <input [(ngModel)]="messageToChild" placeholder="Type message for child">
+      
+      <div class="parent-component">
+        <h4>Parent Component</h4>
+        <p>Parent counter: {{ parentCounter }}</p>
+        <button (click)="incrementParent()">Increment Parent</button>
+        
+        <app-child 
+          *ngIf="showChild"
+          [parentMessage]="messageToChild"
+          (messageToParent)="onChildMessage($event)">
+        </app-child>
+      </div>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ communicationCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 3. VIEWCHILD -->
+  <section class="component-section">
+    <h2>3. ViewChild & Template Reference Variables</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>ViewChild allows you to access child components, directives, or DOM elements from the parent component. Template reference variables provide direct access to elements.</p>
+      <p><strong>@ViewChild:</strong> Access child component/element in TypeScript</p>
+      <p><strong>Template Reference:</strong> #variableName in template</p>
+      <p><strong>Use Case:</strong> Direct method calls, accessing properties, DOM manipulation</p>
+    </div>
+    <div class="example">
+      <h3>Live Example:</h3>
+      <input #userInput placeholder="Type something here">
+      <button (click)="focusInput()">Focus Input</button>
+      <button (click)="getInputValue()">Get Input Value</button>
+      <p *ngIf="inputValue">Input value: <strong>{{ inputValue }}</strong></p>
+      
+      <div #colorBox class="color-box">Click button to change my color</div>
+      <button (click)="changeBoxColor()">Change Box Color</button>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ viewChildCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 4. COMPONENT INHERITANCE -->
+  <section class="component-section">
+    <h2>4. Component Inheritance</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Component inheritance allows you to create base components with common functionality and extend them in child components. This promotes code reuse and consistency.</p>
+      <p><strong>Base Component:</strong> Contains common properties and methods</p>
+      <p><strong>Extended Component:</strong> Inherits from base and adds specific functionality</p>
+      <p><strong>Use Case:</strong> Shared functionality, consistent behavior across components</p>
+    </div>
+    <div class="example">
+      <h3>Live Example:</h3>
+      <div class="inheritance-demo">
+        <div class="base-component">
+          <h4>Base Component Features</h4>
+          <p>ID: {{ componentId }}</p>
+          <p>Created: {{ createdAt | date:'short' }}</p>
+          <p>Status: {{ status }}</p>
+          <button (click)="updateStatus()">Update Status</button>
+        </div>
+      </div>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ inheritanceCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 5. STANDALONE COMPONENTS -->
+  <section class="component-section">
+    <h2>5. Standalone Components (Modern Angular)</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Standalone components are self-contained and don't require NgModules. They import their dependencies directly, making them more modular and easier to manage.</p>
+      <p><strong>Benefits:</strong> Simpler architecture, better tree-shaking, easier testing</p>
+      <p><strong>Syntax:</strong> standalone: true in @Component decorator</p>
+      <p><strong>Imports:</strong> Direct imports in component metadata</p>
+    </div>
+    <div class="example">
+      <h3>Live Example:</h3>
+      <div class="standalone-demo">
+        <p>This entire components demo is built with standalone components!</p>
+        <p>Features demonstrated:</p>
+        <ul>
+          <li>No NgModule required</li>
+          <li>Direct imports (FormsModule, CommonModule)</li>
+          <li>Self-contained components</li>
+          <li>Modern Angular architecture</li>
+        </ul>
+      </div>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ standaloneCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 6. COMPONENT BEST PRACTICES -->
+  <section class="component-section">
+    <h2>6. Component Best Practices</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Best practices ensure maintainable, performant, and scalable Angular applications. Following these guidelines leads to better code quality and developer experience.</p>
+    </div>
+    <div class="example">
+      <h3>Key Best Practices:</h3>
+      <div class="best-practices">
+        <div class="practice-item">
+          <h4>✅ Single Responsibility</h4>
+          <p>Each component should have one clear purpose</p>
+        </div>
+        <div class="practice-item">
+          <h4>✅ OnPush Change Detection</h4>
+          <p>Use OnPush strategy for better performance</p>
+        </div>
+        <div class="practice-item">
+          <h4>✅ Unsubscribe from Observables</h4>
+          <p>Prevent memory leaks in ngOnDestroy</p>
+        </div>
+        <div class="practice-item">
+          <h4>✅ Use Signals (Angular 16+)</h4>
+          <p>Modern reactive state management</p>
+        </div>
+        <div class="practice-item">
+          <h4>✅ Standalone Components</h4>
+          <p>Prefer standalone over NgModule when possible</p>
+        </div>
+        <div class="practice-item">
+          <h4>✅ TypeScript Strict Mode</h4>
+          <p>Enable strict type checking for better code quality</p>
+        </div>
+      </div>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ bestPracticesCode }}</pre>
+    </div>
+  </section>
+</div>

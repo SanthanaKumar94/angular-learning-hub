@@ -1,0 +1,190 @@
+<div class="lifecycle-container">
+  <div class="back-nav">
+    <button routerLink="../" class="back-btn">← Back to Components</button>
+  </div>
+  
+  <h1>Component Lifecycle Hooks</h1>
+  
+  <!-- LIFECYCLE ORDER -->
+  <section class="lifecycle-section">
+    <h2>🔄 Lifecycle Execution Order</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Angular calls lifecycle hooks in a specific order during component creation, updates, and destruction. Understanding this order is crucial for proper component behavior.</p>
+    </div>
+    
+    <div class="execution-order">
+      <div class="hook-item">
+        <div class="hook-number">1</div>
+        <div class="hook-details">
+          <h4>constructor()</h4>
+          <p>TypeScript class constructor. Initialize basic properties, inject dependencies.</p>
+          <span class="timing">Before Angular initialization</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">2</div>
+        <div class="hook-details">
+          <h4>ngOnChanges()</h4>
+          <p>Called when @Input properties change. Receives SimpleChanges object.</p>
+          <span class="timing">Before ngOnInit and whenever @Input changes</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">3</div>
+        <div class="hook-details">
+          <h4>ngOnInit()</h4>
+          <p>Initialize component after Angular sets input properties. Perfect for setup logic.</p>
+          <span class="timing">Once after first ngOnChanges</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">4</div>
+        <div class="hook-details">
+          <h4>ngDoCheck()</h4>
+          <p>Custom change detection. Called during every change detection cycle.</p>
+          <span class="timing">After ngOnChanges and ngOnInit, then every cycle</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">5</div>
+        <div class="hook-details">
+          <h4>ngAfterContentInit()</h4>
+          <p>Called after Angular projects external content into component's view.</p>
+          <span class="timing">Once after first ngDoCheck</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">6</div>
+        <div class="hook-details">
+          <h4>ngAfterContentChecked()</h4>
+          <p>Called after Angular checks projected content.</p>
+          <span class="timing">After ngAfterContentInit and every ngDoCheck</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">7</div>
+        <div class="hook-details">
+          <h4>ngAfterViewInit()</h4>
+          <p>Called after Angular initializes component's views and child views.</p>
+          <span class="timing">Once after first ngAfterContentChecked</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">8</div>
+        <div class="hook-details">
+          <h4>ngAfterViewChecked()</h4>
+          <p>Called after Angular checks component's views and child views.</p>
+          <span class="timing">After ngAfterViewInit and every ngAfterContentChecked</span>
+        </div>
+      </div>
+      
+      <div class="hook-item">
+        <div class="hook-number">9</div>
+        <div class="hook-details">
+          <h4>ngOnDestroy()</h4>
+          <p>Cleanup before Angular destroys the component. Unsubscribe, detach event handlers.</p>
+          <span class="timing">Just before component destruction</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILED EXPLANATIONS -->
+  <section class="lifecycle-section">
+    <h2>📚 Detailed Hook Explanations</h2>
+    
+    <div class="hook-explanation">
+      <h3>🏗️ Initialization Hooks</h3>
+      <div class="hook-detail">
+        <h4>constructor()</h4>
+        <p><strong>Purpose:</strong> Basic initialization, dependency injection</p>
+        <p><strong>When to use:</strong> Set default values, inject services</p>
+        <p><strong>Avoid:</strong> DOM manipulation, heavy operations</p>
+      </div>
+      
+      <div class="hook-detail">
+        <h4>ngOnInit()</h4>
+        <p><strong>Purpose:</strong> Component initialization after input binding</p>
+        <p><strong>When to use:</strong> API calls, complex initialization, setup subscriptions</p>
+        <p><strong>Best practice:</strong> Most initialization logic goes here</p>
+      </div>
+    </div>
+    
+    <div class="hook-explanation">
+      <h3>🔄 Change Detection Hooks</h3>
+      <div class="hook-detail">
+        <h4>ngOnChanges(changes: SimpleChanges)</h4>
+        <p><strong>Purpose:</strong> Respond to @Input property changes</p>
+        <p><strong>When to use:</strong> React to input changes, validate inputs</p>
+        <p><strong>Parameters:</strong> SimpleChanges object with previous/current values</p>
+      </div>
+      
+      <div class="hook-detail">
+        <h4>ngDoCheck()</h4>
+        <p><strong>Purpose:</strong> Custom change detection logic</p>
+        <p><strong>When to use:</strong> Detect changes Angular can't detect automatically</p>
+        <p><strong>Warning:</strong> Called frequently, keep logic lightweight</p>
+      </div>
+    </div>
+    
+    <div class="hook-explanation">
+      <h3>📦 Content Hooks</h3>
+      <div class="hook-detail">
+        <h4>ngAfterContentInit()</h4>
+        <p><strong>Purpose:</strong> Access projected content (ng-content)</p>
+        <p><strong>When to use:</strong> Initialize logic that depends on projected content</p>
+        <p><strong>Safe for:</strong> Accessing @ContentChild elements</p>
+      </div>
+      
+      <div class="hook-detail">
+        <h4>ngAfterContentChecked()</h4>
+        <p><strong>Purpose:</strong> Respond to projected content changes</p>
+        <p><strong>When to use:</strong> React to content updates</p>
+        <p><strong>Warning:</strong> Called frequently during change detection</p>
+      </div>
+    </div>
+    
+    <div class="hook-explanation">
+      <h3>👁️ View Hooks</h3>
+      <div class="hook-detail">
+        <h4>ngAfterViewInit()</h4>
+        <p><strong>Purpose:</strong> Access ViewChild elements, initialize third-party libraries</p>
+        <p><strong>When to use:</strong> DOM manipulation, ViewChild access</p>
+        <p><strong>Safe for:</strong> Accessing child components and DOM elements</p>
+      </div>
+      
+      <div class="hook-detail">
+        <h4>ngAfterViewChecked()</h4>
+        <p><strong>Purpose:</strong> Respond to view changes</p>
+        <p><strong>When to use:</strong> React to view updates</p>
+        <p><strong>Warning:</strong> Called frequently during change detection</p>
+      </div>
+    </div>
+    
+    <div class="hook-explanation">
+      <h3>🧹 Cleanup Hook</h3>
+      <div class="hook-detail">
+        <h4>ngOnDestroy()</h4>
+        <p><strong>Purpose:</strong> Cleanup before component destruction</p>
+        <p><strong>When to use:</strong> Unsubscribe observables, clear timers, remove event listeners</p>
+        <p><strong>Critical for:</strong> Preventing memory leaks</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE EXAMPLES -->
+  <section class="lifecycle-section">
+    <h2>💻 Complete Code Examples</h2>
+    <div class="code-snippet">
+      <pre>{{ lifecycleCodeExample }}</pre>
+    </div>
+  </section>
+</div>
