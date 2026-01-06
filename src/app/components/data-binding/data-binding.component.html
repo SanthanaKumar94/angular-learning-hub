@@ -1,0 +1,180 @@
+<div class="data-binding-container">
+  <h1>Data Binding in Angular</h1>
+  
+  <!-- 1. INTERPOLATION -->
+  <section class="binding-section">
+    <h2>1. Interpolation {{ '{' }}{{ '{' }} {{ '}' }}{{ '}' }}</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Interpolation allows you to embed expressions into marked up text. It's a one-way data binding technique that displays component data in the template using double curly braces.</p>
+      <p><strong>Syntax:</strong> <code>{{ '{' }}{{ '{' }} expression {{ '}' }}{{ '}' }}</code></p>
+      <p><strong>Data Flow:</strong> Component → Template (One-way)</p>
+    </div>
+    <div class="example">
+      <h3>Live Examples:</h3>
+      <p>Welcome, {{ userName() }}!</p>
+      <p>Today is {{ currentDate() }}</p>
+      <p>2 + 3 = {{ 2 + 3 }}</p>
+      <p>Message: {{ getMessage() }}</p>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ interpolationCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 2. PROPERTY BINDING -->
+  <section class="binding-section">
+    <h2>2. Property Binding [property]</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Property binding sets a property of a target element or directive. It binds component properties to DOM element properties, not HTML attributes.</p>
+      <p><strong>Syntax:</strong> <code>[property]="expression"</code></p>
+      <p><strong>Data Flow:</strong> Component → Template (One-way)</p>
+      <p><strong>Use Case:</strong> Setting element properties like src, disabled, value, etc.</p>
+    </div>
+    <div class="example">
+      <h3>Live Examples:</h3>
+      <img [src]="imageUrl()" [alt]="imageAlt()" [width]="imageWidth()">
+      <br><br>
+      <button [disabled]="isButtonDisabled()">{{ buttonText() }}</button>
+      <br><br>
+      <input [value]="inputValue()" [placeholder]="placeholderText()">
+      <br><br>
+      <div [innerHTML]="htmlContent()"></div>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ propertyBindingCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 3. EVENT BINDING -->
+  <section class="binding-section">
+    <h2>3. Event Binding (event)</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Event binding listens for and responds to user actions such as keystrokes, mouse movements, clicks, and touches. It allows data to flow from the template to the component.</p>
+      <p><strong>Syntax:</strong> <code>(event)="method()"</code></p>
+      <p><strong>Data Flow:</strong> Template → Component (One-way)</p>
+      <p><strong>Use Case:</strong> Handling user interactions like clicks, input changes, mouse events.</p>
+    </div>
+    <div class="example">
+      <h3>Live Examples:</h3>
+      <button (click)="onButtonClick()">Click Me!</button>
+      <p>Button clicked {{ clickCount() }} times</p>
+      
+      <input (input)="onInputChange($event)" placeholder="Type something...">
+      <p>You typed: {{ typedText() }}</p>
+      
+      <button (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+        {{ hoverText() }}
+      </button>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ eventBindingCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 4. TWO-WAY BINDING -->
+  <section class="binding-section">
+    <h2>4. Two-Way Binding [(ngModel)]</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Two-way binding combines property binding and event binding in a single notation. It allows data to flow both ways: from component to template and from template to component.</p>
+      <p><strong>Syntax:</strong> <code>[(ngModel)]="property"</code></p>
+      <p><strong>Data Flow:</strong> Component ↔ Template (Bidirectional)</p>
+      <p><strong>Requirements:</strong> Import FormsModule in component</p>
+      <p><strong>Use Case:</strong> Form controls where user input should update component data immediately.</p>
+    </div>
+    <div class="example">
+      <h3>Live Examples:</h3>
+      <label>Name: </label>
+      <input [(ngModel)]="formData.name" placeholder="Enter your name">
+      <p>Hello, {{ formData.name }}!</p>
+      
+      <label>Age: </label>
+      <input type="number" [(ngModel)]="formData.age" placeholder="Enter age">
+      <p>You are {{ formData.age }} years old</p>
+      
+      <label>Message: </label>
+      <textarea [(ngModel)]="formData.message" rows="3" cols="30"></textarea>
+      <p>Your message: {{ formData.message }}</p>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ twoWayBindingCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 5. ATTRIBUTE BINDING -->
+  <section class="binding-section">
+    <h2>5. Attribute Binding [attr.attribute]</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Attribute binding sets the value of HTML attributes directly. Use it when there's no corresponding DOM property or when you need to set ARIA attributes, data attributes, or SVG attributes.</p>
+      <p><strong>Syntax:</strong> <code>[attr.attribute-name]="expression"</code></p>
+      <p><strong>Data Flow:</strong> Component → Template (One-way)</p>
+      <p><strong>Use Case:</strong> Setting HTML attributes like aria-label, data-*, colspan, etc.</p>
+    </div>
+    <div class="example">
+      <h3>Live Examples:</h3>
+      <button [attr.aria-label]="ariaLabel()" [attr.data-info]="dataInfo()">
+        Accessible Button
+      </button>
+      <br><br>
+      <div [attr.role]="roleValue()" [attr.tabindex]="tabIndex()">
+        Custom Div with Attributes
+      </div>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ attributeBindingCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 6. CLASS BINDING -->
+  <section class="binding-section">
+    <h2>6. Class Binding [class]</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Class binding allows you to add and remove CSS classes dynamically. You can bind to a single class conditionally or set multiple classes at once.</p>
+      <p><strong>Syntax:</strong> <code>[class.class-name]="condition"</code> or <code>[class]="expression"</code></p>
+      <p><strong>Data Flow:</strong> Component → Template (One-way)</p>
+      <p><strong>Use Case:</strong> Dynamic styling, conditional CSS classes, theme switching.</p>
+    </div>
+    <div class="example">
+      <h3>Live Examples:</h3>
+      <div [class]="dynamicClass()">Dynamic class binding</div>
+      <div [class.active]="isActive()" [class.highlight]="isHighlighted()">
+        Conditional classes
+      </div>
+      <button (click)="toggleActive()">Toggle Active</button>
+      <button (click)="toggleHighlight()">Toggle Highlight</button>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ classBindingCode }}</pre>
+    </div>
+  </section>
+
+  <!-- 7. STYLE BINDING -->
+  <section class="binding-section">
+    <h2>7. Style Binding [style]</h2>
+    <div class="definition">
+      <h3>Definition:</h3>
+      <p>Style binding allows you to set inline styles dynamically. You can bind to individual style properties or set multiple styles at once using a style object.</p>
+      <p><strong>Syntax:</strong> <code>[style.property]="value"</code> or <code>[style]="styleObject"</code></p>
+      <p><strong>Data Flow:</strong> Component → Template (One-way)</p>
+      <p><strong>Use Case:</strong> Dynamic styling, animations, responsive design, theme customization.</p>
+    </div>
+    <div class="example">
+      <h3>Live Examples:</h3>
+      <div [style.color]="textColor()" [style.font-size.px]="fontSize()">
+        Styled text
+      </div>
+      <div [style]="dynamicStyles()">
+        Multiple styles
+      </div>
+      <button (click)="changeStyles()">Change Styles</button>
+    </div>
+    <div class="code-snippet">
+      <pre>{{ styleBindingCode }}</pre>
+    </div>
+  </section>
+</div>

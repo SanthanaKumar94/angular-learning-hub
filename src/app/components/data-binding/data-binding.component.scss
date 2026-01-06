@@ -1,0 +1,118 @@
+.data-binding-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #1976d2;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.binding-section {
+  margin-bottom: 3rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.binding-section h2 {
+  color: #1976d2;
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.definition {
+  background: #e3f2fd;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #1976d2;
+}
+
+.definition h3 {
+  color: #1976d2;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.definition p {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.definition code {
+  background: #f5f5f5;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: #d32f2f;
+}
+
+.example {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.code-snippet {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.code-snippet pre {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0.25rem;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 0.25rem;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.active {
+  background-color: #4caf50 !important;
+  color: white;
+}
+
+.highlight {
+  border: 2px solid #ff9800 !important;
+}
+
+img {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
